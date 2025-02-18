@@ -55,7 +55,7 @@ st.markdown("""
     Colecta Solidaria 2025 destinada a la compra de elementos de protección personal contra incendios forestales e interfase.  
     **Realiza tu donacion**:Alias [bomberoselhoyo](http://link.mercadopago.com.ar/bomberoselhoyo)
     
-    MercadoPago cobra el 6.29% por pagos a travez del link. **transferi manualmente al alias bomberoselhoyo** :)
+    MercadoPago cobra el 6.29% por pagos a travez del link. **transferi manualmente al alias bomberoselhoyo** ;)
     
     Síguenos en Instagram: [@bomberoseh](https://www.instagram.com/bomberoseh)  
     Facebook: [Bomberos Voluntarios El Hoyo](https://www.facebook.com/bomberosvoluntarioselhoyo)
