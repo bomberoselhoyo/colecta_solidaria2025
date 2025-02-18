@@ -10,8 +10,9 @@ def cargar_datos():
 # Llamar a la función que carga los datos
 df = cargar_datos()
 
-# Definir la meta de recaudación
+# Definir la meta de recaudación y el costo por bombero
 meta = 42108664
+costo_por_bombero = meta / 33  # Costo de equipar a un bombero
 
 # Calcular total recaudado
 total_recaudado = df["monto recaudado"].sum()
@@ -19,13 +20,11 @@ total_recaudado = df["monto recaudado"].sum()
 # Calcular el porcentaje de avance
 porcentaje_avance = (total_recaudado / meta) * 100
 
+# Calcular la cantidad de bomberos equipados
+bomberos_equipados = total_recaudado / costo_por_bombero
+
 # Mostrar los datos en la app
 st.title("Avance de la Colecta")
-st.metric(
-    label="Monto Recaudado",
-    value=f"${total_recaudado:,.2f}",
-    delta=f"${meta - total_recaudado:,.2f} faltan",
-)
 
 # Crear el medidor circular para mostrar el porcentaje de avance
 gauge = go.Figure(go.Indicator(
@@ -47,6 +46,17 @@ gauge = go.Figure(go.Indicator(
 
 # Mostrar el medidor circular
 st.plotly_chart(gauge, use_container_width=True, key=f"gauge_chart_{int(porcentaje_avance)}")
+
+# Mostrar la cantidad de bomberos equipados con un solo decimal en color rojo, debajo del gráfico
+st.markdown(f"<h3 style='color:red;'>BOMBEROS EQUIPADOS: {bomberos_equipados:.1f}</h3>", unsafe_allow_html=True)
+
+# Mostrar el monto recaudado y lo que falta
+st.metric(
+    label="Monto Recaudado",
+    value=f"${total_recaudado:,.2f}",
+    delta=f"${meta - total_recaudado:,.2f} faltan",
+)
+
 
 # Agregar el texto al pie de la página
 st.markdown("""
