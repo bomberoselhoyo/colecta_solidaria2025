@@ -61,7 +61,7 @@ st.markdown("""
     Facebook: [Bomberos Voluntarios El Hoyo](https://www.facebook.com/bomberosvoluntarioselhoyo)
     E-Mail [cdbomberosvoluntarioselhoyo@gmail.com](mailto:cdbomberosvoluntarioselhoyo@gmail.com)
     
-    **" el valor respresentado en esta pagina se actualizara cada 6 horas aproximadamente, la meta propuesta representa el valor en dolares americanos de 39100 USD$ a la cotizacion de mercado"**
+   " El valor respresentado en esta pagina puede sufrir demoras en su actualizacion, la meta propuesta representa el valor en dolares americanos de 39100 USD$ "
 
     
     
