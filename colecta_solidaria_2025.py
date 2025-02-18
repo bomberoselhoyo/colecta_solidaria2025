@@ -28,6 +28,26 @@ st.metric(
     delta=f"${meta - total_recaudado:,.2f} faltan",
 )
 
+# Crear un medidor circular con el porcentaje de avance
+gauge = go.Figure(go.Indicator(
+    mode="gauge+number",
+    value=porcentaje_avance,
+    title={"text": "Porcentaje Recaudado", "font": {"size": 20}},
+    gauge={
+        "axis": {"range": [0, 100]},
+        "bar": {"color": "green"},
+        "steps": [
+            {"range": [0, 25], "color": "red"},
+            {"range": [25, 50], "color": "yellow"},
+            {"range": [50, 75], "color": "orange"},
+            {"range": [75, 100], "color": "green"},
+        ],
+    }
+))
+
+# Mostrar medidor circular
+st.plotly_chart(gauge, use_container_width=True)
+
 # Crear gráfico de barras
 fig, ax = plt.subplots(figsize=(6, 2))
 ax.barh(["Progreso"], [total_recaudado], color="green", label="Recaudado")
@@ -46,22 +66,15 @@ ax.grid(axis="x", linestyle="--", alpha=0.5)
 # Mostrar gráfico en Streamlit
 st.pyplot(fig)
 
-# Crear un medidor circular con el porcentaje de avance
-gauge = go.Figure(go.Indicator(
-    mode="gauge+number",
-    value=porcentaje_avance,
-    title={"text": "Porcentaje Recaudado", "font": {"size": 20}},
-    gauge={
-        "axis": {"range": [0, 100]},
-        "bar": {"color": "green"},
-        "steps": [
-            {"range": [0, 25], "color": "red"},
-            {"range": [25, 50], "color": "yellow"},
-            {"range": [50, 75], "color": "orange"},
-            {"range": [75, 100], "color": "green"},
-        ],
-    }
-))
+# Agregar el texto al pie de la página
+st.markdown("""
+    ---
+    **Asociación de Bomberos Voluntarios de El Hoyo**  
+    Colecta Solidaria 2025 destinada a la compra de elementos de protección personal contra incendios forestales e interfase.  
+    Síguenos en Instagram: [@bomberoseh](https://www.instagram.com/bomberoseh)  
+    Facebook: [Bomberos Voluntarios El Hoyo](https://www.facebook.com/bomberoseh)
+""")
+
 
 # Mostrar medidor circular
 st.plotly_chart(gauge, use_container_width=True)
