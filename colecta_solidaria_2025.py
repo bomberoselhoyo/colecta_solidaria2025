@@ -1,9 +1,8 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
 import plotly.graph_objects as go
 
-# Cargar datos desde Google Sheets sin caché
+# Cargar datos desde Google Sheets
 def cargar_datos():
     url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRdoYbngv7jBofQIEtnuoeylBn0o0TEY8NiPOZ43VmLvz7AGfmNFdveUB_DVLIRC2bJVZnO4XI0vqdb/pub?output=csv"
     return pd.read_csv(url)
@@ -20,7 +19,7 @@ total_recaudado = df["monto recaudado"].sum()
 # Calcular el porcentaje de avance
 porcentaje_avance = (total_recaudado / meta) * 100
 
-# Mostrar datos en la app
+# Mostrar los datos en la app
 st.title("Avance de la Colecta")
 st.metric(
     label="Monto Recaudado",
@@ -28,7 +27,7 @@ st.metric(
     delta=f"${meta - total_recaudado:,.2f} faltan",
 )
 
-# Crear un medidor circular con el porcentaje de avance
+# Crear el medidor circular para mostrar el porcentaje de avance
 gauge = go.Figure(go.Indicator(
     mode="gauge+number",
     value=porcentaje_avance,
@@ -45,26 +44,8 @@ gauge = go.Figure(go.Indicator(
     }
 ))
 
-# Mostrar medidor circular
-st.plotly_chart(gauge, use_container_width=True)
-
-# Crear gráfico de barras
-fig, ax = plt.subplots(figsize=(6, 2))
-ax.barh(["Progreso"], [total_recaudado], color="green", label="Recaudado")
-ax.barh(["Progreso"], [meta - total_recaudado], left=[total_recaudado], color="red", label="Faltante")
-
-# Configurar el eje X en porcentaje
-ax.set_xticks([0, meta * 0.25, meta * 0.50, meta * 0.75, meta])
-ax.set_xticklabels(["0%", "25%", "50%", "75%", "100%"])
-
-# Mejoras visuales
-ax.set_xlabel("Porcentaje de la meta alcanzado")
-ax.set_title(f"Avance de la Colecta: ${total_recaudado:,.2f} / ${meta:,.2f}")
-ax.legend()
-ax.grid(axis="x", linestyle="--", alpha=0.5)
-
-# Mostrar gráfico en Streamlit
-st.pyplot(fig)
+# Mostrar el medidor circular
+st.plotly_chart(gauge, use_container_width=True, key=f"gauge_chart_{int(porcentaje_avance)}")
 
 # Agregar el texto al pie de la página
 st.markdown("""
@@ -72,10 +53,7 @@ st.markdown("""
     **Asociación de Bomberos Voluntarios de El Hoyo**  
     Colecta Solidaria 2025 destinada a la compra de elementos de protección personal contra incendios forestales e interfase.  
     Síguenos en Instagram: [@bomberoseh](https://www.instagram.com/bomberoseh)  
-    Facebook: [Bomberos Voluntarios El Hoyo](https://www.facebook.com/bomberoseh)
+    Facebook: [Bomberos Voluntarios El Hoyo](https://www.facebook.com/bomberosvoluntarioselhoyo)
 """)
 
-
-# Mostrar medidor circular
-st.plotly_chart(gauge, use_container_width=True)
 
