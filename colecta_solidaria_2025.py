@@ -32,6 +32,7 @@ gauge = go.Figure(go.Indicator(
     mode="gauge+number",
     value=porcentaje_avance,
     title={"text": "Porcentaje Recaudado", "font": {"size": 20}},
+    number={"suffix": "%", "font": {"size": 30}},  # Aquí se agrega el símbolo %
     gauge={
         "axis": {"range": [0, 100]},
         "bar": {"color": "green"},
@@ -52,12 +53,14 @@ st.markdown("""
     ---
     **Asociación de Bomberos Voluntarios de El Hoyo**  
     Colecta Solidaria 2025 destinada a la compra de elementos de protección personal contra incendios forestales e interfase.  
-    **realiza tu donacion**:  MercadoPago: Alias [bomberoselhoyo](http://link.mercadopago.com.ar/bomberoselhoyo)
-    MercadoPago cobra el 6.29% por pagos a travez del link. transferi al alias **bomberoselhoyo** :)
+    **Realiza tu donacion**:Alias [bomberoselhoyo](http://link.mercadopago.com.ar/bomberoselhoyo)
+    
+    MercadoPago cobra el 6.29% por pagos a travez del link. **transferi manualmente al alias bomberoselhoyo** :)
     
     Síguenos en Instagram: [@bomberoseh](https://www.instagram.com/bomberoseh)  
     Facebook: [Bomberos Voluntarios El Hoyo](https://www.facebook.com/bomberosvoluntarioselhoyo)
     E-Mail [cdbomberosvoluntarioselhoyo@gmail.com](mailto:cdbomberosvoluntarioselhoyo@gmail.com)
+    **" el valor respresentado en esta pagina se actualizara cada 6 horas aproximadamente"**
 
     
     
