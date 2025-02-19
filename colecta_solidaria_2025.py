@@ -52,7 +52,7 @@ st.markdown(f"<h3 style='color:red;'>BOMBEROS EQUIPADOS: {bomberos_equipados:.1f
 
 # Mostrar el monto recaudado y lo que falta
 st.metric(
-    label="Monto Recaudado",
+    label=" 💰 Monto Recaudado",
     value=f"${total_recaudado:,.2f}",
     delta=f"${meta - total_recaudado:,.2f} faltan",
 )
