@@ -49,7 +49,7 @@ gauge = go.Figure(go.Indicator(
 st.plotly_chart(gauge, use_container_width=True, key=f"gauge_chart_{int(porcentaje_avance)}")
 
 # Mostrar la cantidad de bomberos equipados con un solo decimal en color rojo, debajo del gráfico
-st.markdown(f"<h3 style='color:red;'>👨‍🚒 BOMBEROS EQUIPADOS: {bomberos_equipados:.1f}</h3>", unsafe_allow_html=True 👩‍🚒)
+st.markdown(f"<h3 style='color:red;'>👨‍🚒 BOMBEROS EQUIPADOS: {bomberos_equipados:.1f}</h3>", unsafe_allow_html=True)
 
 # Mostrar el monto recaudado y lo que falta
 st.metric(
