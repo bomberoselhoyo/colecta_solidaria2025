@@ -77,5 +77,8 @@ st.markdown("""
     
     
 """)
-
+# Imagen centrada
+st.markdown("<p style='text-align: center;'>", unsafe_allow_html=True)
+st.image("Logo en alta 3x3.jpg", caption="Bomberos Voluntarios de El Hoyo", width=200)
+st.markdown("</p>", unsafe_allow_html=True)
 
